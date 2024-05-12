@@ -1,0 +1,90 @@
+app:
+  description: ''
+  icon: page_facing_up
+  icon_background: '#D5D9EB'
+  mode: agent-chat
+  name: "\u30BD\u30FC\u30B9\u30B3\u30FC\u30C9\u3092\u56F3\u306B\u5909\u63DB"
+model_config:
+  agent_mode:
+    enabled: true
+    max_iteration: 5
+    prompt: null
+    strategy: function_call
+    tools: []
+  annotation_reply:
+    enabled: false
+  chat_prompt_config: {}
+  completion_prompt_config: {}
+  dataset_configs:
+    datasets:
+      datasets: []
+    retrieval_model: single
+  dataset_query_variable: ''
+  external_data_tools: []
+  file_upload:
+    image:
+      detail: high
+      enabled: false
+      number_limits: 3
+      transfer_methods:
+      - remote_url
+      - local_file
+  model:
+    completion_params:
+      stop: []
+    mode: chat
+    name: gemini-1.5-pro-latest
+    provider: google
+  more_like_this:
+    enabled: false
+  opening_statement: "\u3084\u3042\uFF01\u50D5\u306F\u30BD\u30FC\u30B9\u30B3\u30FC\
+    \u30C9\u3092{{convert_type}}\u306B\u5909\u63DB\u3067\u304D\u308B\u3088\u3002\u30BD\
+    \u30FC\u30B9\u30B3\u30FC\u30C9\u3092\u8CBC\u308A\u4ED8\u3051\u3066\u306D\u3002\
+    \n\u8907\u6570\u30D5\u30A1\u30A4\u30EB\u3042\u308B\u5834\u5408\u306F\u30BD\u30FC\
+    \u30B9\u30B3\u30FC\u30C9\u306E\u524D\u5F8C\u3092```\u3067\u533A\u5207\u308B\u3068\
+    \u7CBE\u5EA6\u304C\u4E0A\u304C\u308B\u3088\u3002\n\u5909\u63DB\u3057\u305F\u30B3\
+    \u30FC\u30C9\u306F\u3053\u306E\u30B5\u30A4\u30C8\u3067\u95B2\u89A7\u3057\u3066\
+    \u306D\u3002https://mermaid.live/"
+  pre_prompt: "\u8907\u6570\u306E\u30D7\u30ED\u30B0\u30E9\u30DF\u30F3\u30B0\u8A00\u8A9E\
+    \u3092Markdown\u306EMermaid\u3092\u4F7F\u3063\u3066\u56F3\u306B\u5909\u63DB\u3057\
+    \u3066\u63D0\u4F9B\u3057\u307E\u3059\u3002\n\u30E6\u30FC\u30B6\u30FC\u304C\u5165\
+    \u529B\u3057\u305F\u60C5\u5831\u304C\u30BD\u30FC\u30B9\u30B3\u30FC\u30C9\u3067\
+    \u306F\u306A\u3044\u5834\u5408\u3001\u30D5\u30EC\u30F3\u30C9\u30EA\u30FC\u306B\
+    \u8FD4\u4E8B\u3092\u3057\u3066\u30BD\u30FC\u30B9\u30B3\u30FC\u30C9\u306E\u5165\
+    \u529B\u3092\u4FC3\u3059\u3068\u5171\u306B\u3053\u306E\u30C4\u30FC\u30EB\u306E\
+    \u4F7F\u3044\u65B9\u306E\u8AAC\u660E\u3092\u884C\u3044\u307E\u3059\u3002\n\u51FA\
+    \u529B\u306F\u4F5C\u6210\u3057\u305FMermaid\u306E\u30B3\u30FC\u30C9\u3060\u3051\
+    \u3068\u3057\u3001\u5165\u529B\u3055\u308C\u305F\u30BD\u30FC\u30B9\u30B3\u30FC\
+    \u30C9\u306F\u56DE\u7B54\u5185\u5BB9\u306B\u542B\u3081\u307E\u305B\u3093\u3002\
+    \n\u56F3\u306E\u4E2D\u306B\u306F\u88DC\u8DB3\u3068\u3057\u3066\u51E6\u7406\u306E\
+    \u5185\u5BB9\u3092\u65E5\u672C\u8A9E\u3067\u8A18\u8F09\u306B\u3057\u307E\u3059\
+    \u3002\n\u56F3\u306E\u4E2D\u306B\u306F\u5177\u5408\u7684\u306A\u30AF\u30E9\u30B9\
+    \u540D\u3084\u30E1\u30BD\u30C3\u30C9\u540D\u3092\u8A18\u8F09\u3057\u307E\u3059\
+    \u3002\n\u5165\u529B\u3055\u308C\u305F\u30B3\u30FC\u30C9\u3092 {{convert_type}}\
+    \ \u306B\u5909\u63DB\u3057\u3066\u304F\u3060\u3055\u3044\u3002\n"
+  prompt_type: simple
+  retriever_resource:
+    enabled: false
+  sensitive_word_avoidance:
+    configs: []
+    enabled: false
+    type: ''
+  speech_to_text:
+    enabled: false
+  suggested_questions: []
+  suggested_questions_after_answer:
+    enabled: false
+  text_to_speech:
+    enabled: false
+    language: ''
+    voice: ''
+  user_input_form:
+  - select:
+      default: ''
+      label: "\u56F3\u306E\u7A2E\u985E"
+      options:
+      - "\u30B7\u30FC\u30B1\u30F3\u30B9\u56F3"
+      - "\u30AF\u30E9\u30B9\u56F3"
+      - "\u30D5\u30ED\u30FC\u30C1\u30E3\u30FC\u30C8"
+      required: true
+      variable: convert_type
