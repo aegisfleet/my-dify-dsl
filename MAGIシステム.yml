@@ -1,0 +1,288 @@
+app:
+  description: ''
+  icon: checkered_flag
+  icon_background: '#D5D9EB'
+  mode: advanced-chat
+  name: "MAGI\u30B7\u30B9\u30C6\u30E0"
+workflow:
+  features:
+    file_upload:
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+    opening_statement: "\u63A5\u7D9A\u3092\u78BA\u8A8D\u3057\u307E\u3057\u305F\u3002\
+      \u3088\u3046\u3053\u305D\u3001\u79C1\u306FMAGI\u3067\u3059\u3002\n\u4F1A\u8A71\
+      \u5185\u5BB9\u3092\u8A18\u61B6\u3057\u306A\u3044\u3088\u3046\u306B\u3057\u3066\
+      \u3044\u308B\u305F\u3081\u3001\u8CEA\u554F\u306F\u7701\u7565\u3057\u306A\u3044\
+      \u3067\u304F\u3060\u3055\u3044\u3002"
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        sourceType: start
+        targetType: llm
+      id: 1715937315807-llm
+      source: '1715937315807'
+      sourceHandle: source
+      target: llm
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: llm
+        targetType: llm
+      id: llm-1715953047078
+      source: llm
+      sourceHandle: source
+      target: '1715953047078'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: llm
+        targetType: llm
+      id: 1715953047078-1715953090093
+      source: '1715953047078'
+      sourceHandle: source
+      target: '1715953090093'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: llm
+        targetType: llm
+      id: 1715953090093-1715953102392
+      source: '1715953090093'
+      sourceHandle: source
+      target: '1715953102392'
+      targetHandle: target
+      type: custom
+    - data:
+        sourceType: llm
+        targetType: answer
+      id: 1715953102392-answer
+      source: '1715953102392'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: "\u958B\u59CB"
+        type: start
+        variables: []
+      height: 54
+      id: '1715937315807'
+      position:
+        x: 397.1474209977887
+        y: 418.2189683626877
+      positionAbsolute:
+        x: 397.1474209977887
+        y: 418.2189683626877
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gemini-1.5-pro-latest
+          provider: google
+        prompt_template:
+        - id: c0128fa1-7f81-46f7-a74b-52fa318dd3bd
+          role: system
+          text: "\u5165\u529B\u3055\u308C\u305F\u8CEA\u554F\u306B\u65E5\u672C\u8A9E\
+            \u3067\u56DE\u7B54\u3057\u3066\u304F\u3060\u3055\u3044\u3002"
+        - role: user
+          text: '{{#sys.query#}}'
+        selected: false
+        title: Gemini
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: false
+      height: 98
+      id: llm
+      position:
+        x: 692
+        y: 282
+      positionAbsolute:
+        x: 692
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: "# Gemini 1.5 Pro\u306E\u56DE\u7B54\n{{#llm.text#}}\n\n# command-r-plus\u306E\
+          \u56DE\u7B54\n{{#1715953047078.text#}}\n\n# Llama-3-70B-8192\u306E\u56DE\
+          \u7B54\n{{#1715953090093.text#}}\n\n# \u307E\u3068\u3081\n{{#1715953102392.text#}}"
+        desc: ''
+        selected: false
+        title: "\u56DE\u7B54"
+        type: answer
+        variables: []
+      height: 192
+      id: answer
+      position:
+        x: 1290.8055462452317
+        y: 397.22234660221466
+      positionAbsolute:
+        x: 1290.8055462452317
+        y: 397.22234660221466
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: command-r-plus
+          provider: cohere
+        prompt_template:
+        - id: 642ec3c4-bd59-42ff-b3f4-9c242d21c8f6
+          role: system
+          text: "\u5165\u529B\u3055\u308C\u305F\u8CEA\u554F\u306B\u65E5\u672C\u8A9E\
+            \u3067\u56DE\u7B54\u3057\u3066\u304F\u3060\u3055\u3044\u3002"
+        - role: user
+          text: '{{#sys.query#}}'
+        selected: false
+        title: Command R+
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 98
+      id: '1715953047078'
+      position:
+        x: 692
+        y: 397.22234660221466
+      positionAbsolute:
+        x: 692
+        y: 397.22234660221466
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: llama3-70b-8192
+          provider: groq
+        prompt_template:
+        - id: 418d2c2d-e50d-48c3-a8d1-d9f7e8c2c00e
+          role: system
+          text: "\u5165\u529B\u3055\u308C\u305F\u8CEA\u554F\u306B\u65E5\u672C\u8A9E\
+            \u3067\u56DE\u7B54\u3057\u3066\u304F\u3060\u3055\u3044\u3002"
+        - role: user
+          text: '{{#sys.query#}}'
+        selected: false
+        title: Llama 3
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 98
+      id: '1715953090093'
+      position:
+        x: 692
+        y: 510.67215248181014
+      positionAbsolute:
+        x: 692
+        y: 510.67215248181014
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          query_prompt_template: "```\n{{#sys.query#}}\n```\n\u4E0A\u8A18\u8CEA\u554F\
+            \u306B\u5BFE\u3057\u30663\u3064\u306E\u56DE\u7B54\u3092\u7DCF\u62EC\u3057\
+            \u305F\u3044\u3002\n\u540C\u3058\u610F\u898B\u3092\u5C0A\u91CD\u3057\u3066\
+            \u591A\u6570\u6C7A\u3067\u56DE\u7B54\u3092\u307E\u3068\u3081\u3066\u6B32\
+            \u3057\u3044\u3002\n\n### Gemini\u306E\u56DE\u7B54\n```\n{{#llm.text#}}\n\
+            ```\n### Command R+\u306E\u56DE\u7B54\n```\n{{#1715953047078.text#}}\n\
+            ```\n### Llama3\u306E\u56DE\u7B54\n```\n{{#1715953090093.text#}}\n```"
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: command-r-plus
+          provider: cohere
+        prompt_template:
+        - id: fa2d7230-d26f-483c-92c9-911fb5179b96
+          role: system
+          text: "\u5165\u529B\u3055\u308C\u305F\u8CEA\u554F\u306B\u65E5\u672C\u8A9E\
+            \u3067\u56DE\u7B54\u3057\u3066\u304F\u3060\u3055\u3044\u3002"
+        selected: false
+        title: "\u307E\u3068\u3081"
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 98
+      id: '1715953102392'
+      position:
+        x: 995.9529672430203
+        y: 397.22234660221466
+      positionAbsolute:
+        x: 995.9529672430203
+        y: 397.22234660221466
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: -272.4673331075803
+      y: -173.22074601794725
+      zoom: 1.0988542175768796
